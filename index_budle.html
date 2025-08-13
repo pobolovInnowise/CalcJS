@@ -1,0 +1,194 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        @font-face {
+            font-family: '7segment'; /* любое название */
+            src: url('./fonts/7segment.ttf') format('truetype');
+            font-weight: normal; /* или bold, если это жирный вариант */
+            font-style: normal;  /* или italic, если курсив */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        body.light {
+            background-color: yellow;
+        }
+
+        body.dark {
+            background-color: blue;
+        }
+
+        .calculator {
+            background-color: gray;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px; /* Фиксированная ширина для лучшего вида */
+        }
+        .display {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-family: '7segment';
+            font-size: 30px;
+            text-align: right;
+            border-radius: 4px;
+            min-height: 1.5em; /* Чтобы всегда был виден */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            overflow: hidden; /* Скрываем переполнение */
+            white-space: nowrap; /* Не переносим текст */
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .buttons button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .buttons button:active {
+            transform: translateY(1px);
+        }
+        .buttons button.number-btn {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        .buttons button.number-btn:hover {
+            background-color: #d0d0d0;
+        }
+        .buttons button.binary-operation{
+            background-color: #ff9500; /* Оранжевый для операций */
+            color: white;
+        }
+        .buttons button.binary-operation:hover {
+            background-color: #e68a00;
+        }
+        .buttons button.unary-operation{
+            background-color: #2a2a88; /* Оранжевый для операций */
+            color: white;
+        }
+        .buttons button.unary-operation:hover {
+            background-color: #464680;
+        }
+        .buttons button.memory {
+            background-color: yellow; /* Синий для равно */
+        }
+        .buttons button.memory:hover {
+            background-color: lightyellow;
+        }
+        .buttons button.equals {
+            background-color: #007bff; /* Синий для равно */
+            color: white;
+            grid-column: span 1; /* Растянуть на 2 колонки */
+        }
+        .buttons button.equals:hover {
+            background-color: #0056b3;
+        }
+        .buttons button.clear {
+            background-color: #dc3545; /* Красный для очистки */
+            color: white;
+        }
+        .buttons button.clear:hover {
+            background-color: #c82333;
+        }
+
+
+    </style>
+</head>
+<body class="light">
+<div class="calculator">
+    <button id="theme-toggle">change to dark</button>
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+
+        <button class="memory" data-command="memory-clear">MC</button>
+        <button class="memory" data-command="memory-add">M+</button>
+        <button class="memory" data-command="memory-subtract">M-</button>
+        <button class="memory" data-command="memory-recall">MR</button>
+
+        <button class="clear" id="clear-btn">C</button>
+           <button class="binary-operation" data-command="x-power-y">x<sup>y</sup></button>
+        <button class="unary-operation" data-command="power-two">x<sup>2</sup></button>
+        <button class="unary-operation" data-command="power-three">x<sup>3</sup></button>
+
+        <button class="unary-operation" data-command="percent">%</button>
+        <button class="unary-operation" data-command="square-root">√x</button>
+        <button class="unary-operation" data-command="factorial">n!</button>
+        <button class="unary-operation" data-command="ten-power-x">10<sup>x</sup></button>
+
+        <button class="unary-operation" data-command="cube-root">3√x</button>
+        <button class="unary-operation" data-command="inversion">1/x</button>
+           <button class="binary-operation" data-command="x-root-y">x<sup>1/y</sup></button>
+        <button class="binary-operation" data-command="divide">/</button>
+
+
+        <button class="number-btn">7</button>
+        <button class="number-btn">8</button>
+        <button class="number-btn">9</button>
+        <button class="binary-operation" data-command="add">+</button>
+
+        <button class="number-btn">4</button>
+        <button class="number-btn">5</button>
+        <button class="number-btn">6</button>
+        <button class="binary-operation" data-command="subtract">-</button>
+
+
+        <button class="number-btn">1</button>
+        <button class="number-btn">2</button>
+        <button class="number-btn">3</button>
+        <button class="binary-operation" data-command="multiply">*</button>
+        <button class="number-btn" data-type="dot">.</button>
+        <button class="number-btn" >0</button>
+
+
+        <button class="equals" id="equals-btn">=</button>
+        <button class="unary-operation" data-command="change-sign">+/-</button>
+
+    </div>
+</div>
+
+<script src="./dist/bundle.js" type="module"></script>
+</body>
+</html>
+
+<!--2 операнда: -->
+<!--деление, -->
+<!--умножение, -->
+<!--вычитание, -->
+<!--сложение, -->
+<!--процент,                         ДОПИЛИТЬ !!!-->
+<!--x в степени y, -->
+<!--корень степени y-->
+
+<!--1 операнд:-->
+<!--смена знака,                    ДОПИЛИТЬ !!!-->
+<!--квадрат, -->
+<!--куб, -->
+<!--10 в степени x, -->
+<!--1 / x, -->
+<!--коренеь квадратный, -->
+<!--корень кубический,-->
+<!--факториал-->
+
+
+
+

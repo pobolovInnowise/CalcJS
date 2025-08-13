@@ -1,0 +1,91 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body class="light">
+
+<div class="calculator">
+<!--   <div>-->
+<!--    <span>leftOperand - </span>-->
+<!--    <span  id="leftOperand"></span>-->
+<!--   </div>-->
+<!--    <div>-->
+<!--    <span>displayValue - </span>-->
+<!--    <span   id="displayValue"></span>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--    <span>clearOnNextInput - </span>-->
+<!--    <span   id="clearOnNextInput"></span>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--    <span>hasDot - </span>-->
+<!--    <span   id="hasDot"></span>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--    <span>readyToExecuteBinaryOperation - </span>-->
+<!--    <span  id="readyToExecuteBinaryOperation"></span>-->
+<!--    </div>-->
+
+    <button id="theme-toggle">change to dark</button>
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+
+        <button class="memory" data-command="memory-clear">MC</button>
+        <button class="memory" data-command="memory-add">M+</button>
+        <button class="memory" data-command="memory-subtract">M-</button>
+        <button class="memory" data-command="memory-recall">MR</button>
+
+        <button class="clear" id="clear-btn">C</button>
+        <button class="unary-operation" data-command="power-three">x<sup>3</sup></button>
+        <button class="unary-operation" data-command="power-two">x<sup>2</sup></button>
+        <button class="binary-operation" data-command="x-power-y">x<sup>y</sup></button>
+
+
+        <button class="unary-operation" data-command="percent">%</button>
+        <button class="unary-operation" data-command="square-root"><sup>2</sup>√x</button>
+        <button class="unary-operation" data-command="factorial">n!</button>
+        <button class="binary-operation" data-command="x-root-y">x<sup>1/y</sup></button>
+
+        <button class="unary-operation" data-command="cube-root"><sup>3</sup>√x</button>
+        <button class="unary-operation" data-command="inversion">1/x</button>
+        <button class="unary-operation" data-command="ten-power-x">10<sup>x</sup></button>
+        <button class="binary-operation" data-command="divide">÷</button>
+
+
+        <button class="number-btn">7</button>
+        <button class="number-btn">8</button>
+        <button class="number-btn">9</button>
+        <button class="binary-operation" data-command="add">+</button>
+
+        <button class="number-btn">4</button>
+        <button class="number-btn">5</button>
+        <button class="number-btn">6</button>
+        <button class="binary-operation" data-command="subtract">-</button>
+
+
+        <button class="number-btn">1</button>
+        <button class="number-btn">2</button>
+        <button class="number-btn">3</button>
+        <button class="binary-operation" data-command="multiply">*</button>
+        <button class="number-btn" data-type="dot">.</button>
+        <button class="number-btn" >0</button>
+
+
+        <button class="equals" id="equals-btn">=</button>
+        <button class="unary-operation" data-command="change-sign">+/-</button>
+
+    </div>
+</div>
+
+<script src="./client/client.js" type="module"></script>
+</body>
+</html>
+
+
+
+
